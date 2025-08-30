@@ -30,8 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    
-    # AgriTrade Applications (17 total)
+      # AgriTrade Applications (Core modules)
     'users',
     'products',
     'orders',
@@ -49,7 +48,6 @@ INSTALLED_APPS = [
     'warehouses',
     'weather',
     'authentication',
-    'farmer_dashboard',
     'institution_dashboard',
     'processors',
     'blockchain',

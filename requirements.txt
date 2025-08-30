@@ -2,8 +2,8 @@
 # Professional Django Backend Dependencies
 # Date: August 30, 2025
 
-# Core Django
-Django==5.1.2
+# Core Django - Using LTS compatible versions
+Django==4.2.15
 djangorestframework==3.14.0
 
 # Database

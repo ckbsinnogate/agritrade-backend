@@ -6,12 +6,13 @@ services:
       repo: ckbsinnogate/agritrade-backend
       branch: main
       deploy_on_push: true
+    run_command: |
+      python manage.py migrate --noinput --settings=myapiproject.settings_appplatform
+      python manage.py collectstatic --noinput --settings=myapiproject.settings_appplatform
+      gunicorn --worker-tmp-dir /dev/shm myapiproject.wsgi:application --bind 0.0.0.0:8080 --workers 2
     build_command: |
       python -m pip install --upgrade pip
       pip install -r requirements.txt
-    run_command: |
-      python manage.py migrate --noinput
-      gunicorn --worker-tmp-dir /dev/shm myapiproject.wsgi:application --bind 0.0.0.0:8080 --workers 2
     environment_slug: python
     instance_count: 1
     instance_size_slug: basic-xxs
