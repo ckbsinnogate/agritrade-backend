@@ -49,6 +49,11 @@ ENV/
 .DS_Store
 Thumbs.db
 
+# Docker files (using App Platform Python buildpack instead)
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
 # Development and documentation files
 *.txt
 *.bat
