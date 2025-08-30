@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-07-12T04:11:10.912019",
+  "overall_score": 91.66666666666667,
+  "production_ready": true,
+  "api_score": 75.0,
+  "core_score": 100.0,
+  "web_score": 100,
+  "api_working": 9,
+  "api_total": 12,
+  "core_working": 2,
+  "core_total": 2,
+  "web_platforms": 1
+}

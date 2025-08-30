@@ -1,0 +1,77 @@
+{
+  "timestamp": "2025-07-25T20:36:37.821572",
+  "verification_status": "SUCCESS",
+  "endpoints": {
+    "/api/v1/analytics/platform/": {
+      "url": "http://127.0.0.1:8000/api/v1/analytics/platform/",
+      "status_code": 200,
+      "expected_status": 200,
+      "response_time_ms": 140.77,
+      "success": true,
+      "timestamp": "2025-07-25T20:36:37.963610",
+      "has_json": true,
+      "response_size": 725,
+      "has_success_field": true,
+      "has_data_field": true,
+      "data_type": "dict",
+      "sample_data": "{'success': True, 'data': {'totals': {'users': 73, 'products': 7, 'orders': 24, 'revenue': 0.0}, 'user_roles': {'Farmer': 49, 'Processor': 0, 'Consumer': 3, 'Institution': 0, 'Warehouse Manager': 0, '..."
+    },
+    "/api/v1/analytics/farmer-stats/": {
+      "url": "http://127.0.0.1:8000/api/v1/analytics/farmer-stats/",
+      "status_code": 401,
+      "expected_status": 401,
+      "response_time_ms": 19.72,
+      "success": true,
+      "timestamp": "2025-07-25T20:36:37.985657",
+      "error_message": "{\"detail\":\"Authentication credentials were not provided.\"}"
+    },
+    "/api/v1/ai/market-insights/": {
+      "url": "http://127.0.0.1:8000/api/v1/ai/market-insights/",
+      "status_code": 401,
+      "expected_status": 401,
+      "response_time_ms": 16.4,
+      "success": true,
+      "timestamp": "2025-07-25T20:36:38.002744",
+      "error_message": "{\"detail\":\"Authentication credentials were not provided.\"}"
+    },
+    "/api/v1/warehouses/inventory/optimize/": {
+      "url": "http://127.0.0.1:8000/api/v1/warehouses/inventory/optimize/",
+      "status_code": 401,
+      "expected_status": 401,
+      "response_time_ms": 18.48,
+      "success": true,
+      "timestamp": "2025-07-25T20:36:38.021980",
+      "error_message": "{\"detail\":\"Authentication credentials were not provided.\"}"
+    },
+    "/api/v1/advertisements/dashboard/": {
+      "url": "http://127.0.0.1:8000/api/v1/advertisements/dashboard/",
+      "status_code": 401,
+      "expected_status": 401,
+      "response_time_ms": 22.61,
+      "success": true,
+      "timestamp": "2025-07-25T20:36:38.045343",
+      "error_message": "{\"detail\":\"Authentication credentials were not provided.\"}"
+    },
+    "/api/v1/products/": {
+      "url": "http://127.0.0.1:8000/api/v1/products/",
+      "status_code": 200,
+      "expected_status": 401,
+      "response_time_ms": 7.61,
+      "success": false,
+      "timestamp": "2025-07-25T20:36:38.053789",
+      "has_json": true,
+      "response_size": 1626,
+      "sample_data": "{'message': 'AgriConnect Products API', 'version': '2.1', 'endpoints': {'categories': '/api/v1/products/categories/', 'products': '/api/v1/products/products/', 'featured_products': '/api/v1/products/p..."
+    }
+  },
+  "performance": {
+    "total_tests": 6,
+    "successful_tests": 5,
+    "failed_tests": 1,
+    "critical_failures": 0,
+    "average_response_time_ms": 43.6,
+    "previously_broken_endpoints": 4,
+    "fixed_endpoints": 4
+  },
+  "summary": {}
+}

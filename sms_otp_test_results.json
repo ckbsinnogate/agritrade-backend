@@ -1,0 +1,234 @@
+{
+  "SMS Configuration": {
+    "success": true,
+    "message": "SMS OTP and AVRSMS configuration detected",
+    "timestamp": "2025-08-05T04:10:07.243082",
+    "details": {
+      "SMS_OTP_SETTINGS": {
+        "OTP_LENGTH": 6,
+        "OTP_EXPIRY_MINUTES": 10,
+        "MAX_ATTEMPTS": 3,
+        "RESEND_COOLDOWN_SECONDS": 60,
+        "RATE_LIMIT_PHONE_PER_HOUR": 5,
+        "RATE_LIMIT_IP_PER_HOUR": 10,
+        "RATE_LIMIT_GLOBAL_PER_MINUTE": 20,
+        "PROVIDER": "avrsms",
+        "SENDER_ID": "AgriConnect",
+        "SMS_TIMEOUT": 30,
+        "DEFAULT_COUNTRY_CODE": "+233",
+        "SUPPORTED_COUNTRIES": {
+          "ghana": "+233",
+          "nigeria": "+234",
+          "kenya": "+254",
+          "south_africa": "+27",
+          "senegal": "+221",
+          "tanzania": "+255",
+          "uganda": "+256",
+          "zambia": "+260",
+          "ivory_coast": "+225",
+          "mali": "+223"
+        },
+        "REQUIRE_PHONE_VERIFICATION": true,
+        "AUTO_VERIFY_USER_ON_SUCCESS": true,
+        "GENERATE_JWT_ON_VERIFICATION": true,
+        "SMS_TEMPLATE_CONTEXT": {
+          "company_name": "AgriConnect",
+          "support_phone": "+233200000000",
+          "app_name": "AgriConnect",
+          "brand_name": "AgriConnect"
+        },
+        "AUTO_CLEANUP_EXPIRED_OTPS": true,
+        "CLEANUP_AFTER_DAYS": 7,
+        "LOG_SMS_SENDS": true,
+        "LOG_VERIFICATION_ATTEMPTS": true,
+        "LOG_RATE_LIMIT_HITS": true
+      },
+      "AVRSMS_CONFIG": {
+        "API_ID": "API113898428691",
+        "PASSWORD": "Kingsco45@1",
+        "ENDPOINT": "https://api.avrsms.com"
+      }
+    }
+  },
+  "Phone Number Formatting": {
+    "success": true,
+    "message": "All phone number formats handled correctly",
+    "timestamp": "2025-08-05T04:10:07.243877",
+    "details": {
+      "0244123456": {
+        "expected": "+233244123456",
+        "got": "+233244123456",
+        "passed": true
+      },
+      "+233244123456": {
+        "expected": "+233244123456",
+        "got": "+233244123456",
+        "passed": true
+      },
+      "233244123456": {
+        "expected": "+233244123456",
+        "got": "+233244123456",
+        "passed": true
+      },
+      "+234801234567": {
+        "expected": "+234801234567",
+        "got": "+234801234567",
+        "passed": true
+      },
+      "+254701234567": {
+        "expected": "+254701234567",
+        "got": "+254701234567",
+        "passed": true
+      }
+    }
+  },
+  "OTP Generation": {
+    "success": true,
+    "message": "OTP generation working correctly",
+    "timestamp": "2025-08-05T04:10:07.244575",
+    "details": {
+      "sample_otps": [
+        "319074",
+        "884529",
+        "466016",
+        "622759",
+        "981668"
+      ],
+      "unique_count": 10,
+      "issues": []
+    }
+  },
+  "Rate Limiting Check": {
+    "success": false,
+    "message": "Rate limiting active",
+    "timestamp": "2025-08-05T04:10:07.246564",
+    "details": {
+      "phone_limited": true,
+      "test_phone": "+233244123456"
+    }
+  },
+  "Database Operations": {
+    "success": true,
+    "message": "OTP database operations working correctly",
+    "timestamp": "2025-08-05T04:10:07.337422",
+    "details": {
+      "otp_id": null,
+      "code_length": 6,
+      "tests_passed": 5,
+      "total_tests": 5
+    }
+  },
+  "OTP Verification Logic": {
+    "success": true,
+    "message": "OTP verification logic working correctly",
+    "timestamp": "2025-08-05T04:10:07.345540",
+    "details": {
+      "correct_code_success": true,
+      "correct_code_message": "SMS OTP verified successfully",
+      "incorrect_code_success": false,
+      "incorrect_code_message": "Invalid or expired OTP code",
+      "otp_marked_used": true
+    }
+  },
+  "OTP Expiry": {
+    "success": true,
+    "message": "OTP expiry mechanism working correctly",
+    "timestamp": "2025-08-05T04:10:07.352708",
+    "details": {
+      "expired_otp_accepted": false,
+      "expiry_message": "Invalid or expired OTP code",
+      "expires_at": "2025-08-05T11:09:07.348633+00:00",
+      "current_time": "2025-08-05T11:10:07.352702+00:00"
+    }
+  },
+  "OTP Status Checking": {
+    "success": true,
+    "message": "OTP status checking working correctly",
+    "timestamp": "2025-08-05T04:10:07.358934",
+    "details": {
+      "not_found_status": {
+        "status": "not_found",
+        "phone_number": "+233999999999",
+        "purpose": "registration",
+        "message": "No OTP found for this phone number"
+      },
+      "existing_status": {
+        "status": "pending",
+        "phone_number": "+233244123456",
+        "purpose": "registration",
+        "expires_at": "2025-08-05T11:20:07.355985+00:00",
+        "attempts": 0,
+        "max_attempts": 3,
+        "message": "OTP is pending verification"
+      },
+      "tests_passed": 4,
+      "total_tests": 4
+    }
+  },
+  "Service Integration": {
+    "success": true,
+    "message": "SMS OTP service integration working",
+    "timestamp": "2025-08-05T04:10:07.359436",
+    "details": {
+      "avrsms_service_ok": true,
+      "sms_otp_service_ok": true,
+      "settings_available": true,
+      "sms_otp_settings": {
+        "OTP_LENGTH": 6,
+        "OTP_EXPIRY_MINUTES": 10,
+        "MAX_ATTEMPTS": 3,
+        "RESEND_COOLDOWN_SECONDS": 60,
+        "RATE_LIMIT_PHONE_PER_HOUR": 5,
+        "RATE_LIMIT_IP_PER_HOUR": 10,
+        "RATE_LIMIT_GLOBAL_PER_MINUTE": 20,
+        "PROVIDER": "avrsms",
+        "SENDER_ID": "AgriConnect",
+        "SMS_TIMEOUT": 30,
+        "DEFAULT_COUNTRY_CODE": "+233",
+        "SUPPORTED_COUNTRIES": {
+          "ghana": "+233",
+          "nigeria": "+234",
+          "kenya": "+254",
+          "south_africa": "+27",
+          "senegal": "+221",
+          "tanzania": "+255",
+          "uganda": "+256",
+          "zambia": "+260",
+          "ivory_coast": "+225",
+          "mali": "+223"
+        },
+        "REQUIRE_PHONE_VERIFICATION": true,
+        "AUTO_VERIFY_USER_ON_SUCCESS": true,
+        "GENERATE_JWT_ON_VERIFICATION": true,
+        "SMS_TEMPLATE_CONTEXT": {
+          "company_name": "AgriConnect",
+          "support_phone": "+233200000000",
+          "app_name": "AgriConnect",
+          "brand_name": "AgriConnect"
+        },
+        "AUTO_CLEANUP_EXPIRED_OTPS": true,
+        "CLEANUP_AFTER_DAYS": 7,
+        "LOG_SMS_SENDS": true,
+        "LOG_VERIFICATION_ATTEMPTS": true,
+        "LOG_RATE_LIMIT_HITS": true
+      }
+    }
+  },
+  "Cleanup Functionality": {
+    "success": true,
+    "message": "OTP cleanup working correctly",
+    "timestamp": "2025-08-05T04:10:07.373439",
+    "details": {
+      "before_count": 3,
+      "after_count": 3,
+      "cleaned_count": {
+        "expired_marked": 1,
+        "old_deleted": 0,
+        "total_processed": 1
+      },
+      "current_otp_exists": true,
+      "expired_otp_exists": true,
+      "expired_marked_used": true
+    }
+  }
+}

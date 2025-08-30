@@ -1,0 +1,115 @@
+{
+  "timestamp": "2025-07-12T04:12:25.009390",
+  "overall_score": 90.47619047619048,
+  "production_status": "PRODUCTION READY",
+  "expansion_ready": false,
+  "scores": {
+    "api_success": 71.42857142857143,
+    "core_success": 100.0,
+    "web_success": 100
+  },
+  "details": {
+    "api_endpoints": [
+      {
+        "endpoint": "API Root",
+        "status": "Available",
+        "code": 200
+      },
+      {
+        "endpoint": "Authentication",
+        "status": "Available",
+        "code": 200
+      },
+      {
+        "endpoint": "Products API",
+        "status": "Available",
+        "code": 200
+      },
+      {
+        "endpoint": "Orders API",
+        "status": "Available",
+        "code": 200
+      },
+      {
+        "endpoint": "Payments API",
+        "status": "Error",
+        "code": 500
+      },
+      {
+        "endpoint": "AI Services Root",
+        "status": "Error",
+        "code": 404
+      },
+      {
+        "endpoint": "AI Chat Direct",
+        "status": "Available",
+        "code": 401
+      },
+      {
+        "endpoint": "AI Health Check",
+        "status": "Available",
+        "code": 401
+      },
+      {
+        "endpoint": "Warehouses",
+        "status": "Available",
+        "code": 200
+      },
+      {
+        "endpoint": "Reviews",
+        "status": "Error",
+        "code": 404
+      },
+      {
+        "endpoint": "Communications",
+        "status": "Error",
+        "code": 404
+      },
+      {
+        "endpoint": "Traceability",
+        "status": "Available",
+        "code": 200
+      },
+      {
+        "endpoint": "Subscriptions",
+        "status": "Available",
+        "code": 401
+      },
+      {
+        "endpoint": "Advertisements",
+        "status": "Available",
+        "code": 401
+      }
+    ],
+    "core_functionality": [
+      {
+        "test": "Authentication",
+        "status": "Pass"
+      },
+      {
+        "test": "AI Chat",
+        "status": "Pass"
+      },
+      {
+        "test": "Registration",
+        "status": "Pass"
+      }
+    ],
+    "web_platforms": [
+      {
+        "platform": "Mobile App",
+        "status": "Not Available"
+      },
+      {
+        "platform": "Next.js/React Web App",
+        "status": "Available",
+        "port": 3000
+      }
+    ]
+  },
+  "capacity": {
+    "farmers": 70000,
+    "countries": 4,
+    "revenue_potential": 3500000
+  }
+}

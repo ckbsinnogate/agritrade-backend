@@ -1,0 +1,142 @@
+{
+  "timestamp": "2025-08-03T16:20:44.660908",
+  "validation_type": "Final Comprehensive Validation",
+  "tests": {
+    "migrations": {
+      "status": "PASSED",
+      "applied_count": 55,
+      "message": "All migrations synchronized"
+    },
+    "model_imports": {
+      "status": "PASSED",
+      "models_imported": 11,
+      "field_tests": [
+        {
+          "model": "SystemSettings",
+          "field_count": 11,
+          "status": "OK"
+        },
+        {
+          "model": "AdminPreferences",
+          "field_count": 11,
+          "status": "OK"
+        },
+        {
+          "model": "SystemHealthCheck",
+          "field_count": 8,
+          "status": "OK"
+        },
+        {
+          "model": "SystemMaintenanceLog",
+          "field_count": 11,
+          "status": "OK"
+        },
+        {
+          "model": "AnalyticsSnapshot",
+          "field_count": 15,
+          "status": "OK"
+        },
+        {
+          "model": "CustomAnalyticsReport",
+          "field_count": 12,
+          "status": "OK"
+        },
+        {
+          "model": "ContentModerationQueue",
+          "field_count": 14,
+          "status": "OK"
+        },
+        {
+          "model": "ContentPolicy",
+          "field_count": 10,
+          "status": "OK"
+        },
+        {
+          "model": "UserActivityLog",
+          "field_count": 9,
+          "status": "OK"
+        },
+        {
+          "model": "UserSecurityEvent",
+          "field_count": 12,
+          "status": "OK"
+        },
+        {
+          "model": "AdminActionLog",
+          "field_count": 8,
+          "status": "OK"
+        }
+      ]
+    },
+    "serializer_imports": {
+      "status": "PASSED",
+      "serializers_imported": 12
+    },
+    "url_configuration": {
+      "status": "PASSED",
+      "endpoint_count": 49
+    },
+    "api_endpoints": {
+      "status": "PARTIAL",
+      "success_rate": 0.0,
+      "successful_count": 0,
+      "total_count": 6,
+      "endpoint_results": [
+        {
+          "endpoint": "/api/v1/admin-dashboard/",
+          "status_code": 401,
+          "status": "FAILED"
+        },
+        {
+          "endpoint": "/api/v1/admin-dashboard/settings/system/",
+          "status_code": 401,
+          "status": "FAILED"
+        },
+        {
+          "endpoint": "/api/v1/admin-dashboard/system/health-summary/",
+          "status_code": 401,
+          "status": "FAILED"
+        },
+        {
+          "endpoint": "/api/v1/admin-dashboard/analytics/dashboard/",
+          "status_code": 401,
+          "status": "FAILED"
+        },
+        {
+          "endpoint": "/api/v1/admin-dashboard/content/moderation-summary/",
+          "status_code": 401,
+          "status": "FAILED"
+        },
+        {
+          "endpoint": "/api/v1/admin-dashboard/users/overview/",
+          "status_code": 401,
+          "status": "FAILED"
+        }
+      ]
+    },
+    "django_admin": {
+      "status": "PASSED",
+      "registered_models": 11,
+      "model_names": [
+        "SystemSettings",
+        "AdminPreferences",
+        "SystemHealthCheck",
+        "SystemMaintenanceLog",
+        "AnalyticsSnapshot",
+        "CustomAnalyticsReport",
+        "ContentModerationQueue",
+        "ContentPolicy",
+        "UserActivityLog",
+        "UserSecurityEvent",
+        "AdminActionLog"
+      ]
+    }
+  },
+  "summary": {
+    "total_tests": 6,
+    "passed_tests": 5,
+    "success_rate": 83.33333333333334,
+    "overall_status": "\u26a0\ufe0f GOOD",
+    "production_ready": false
+  }
+}

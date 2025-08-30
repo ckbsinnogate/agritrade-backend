@@ -1,0 +1,61 @@
+name: agritrade-backend
+services:
+- name: web
+  source_dir: /
+  github:
+    repo: your-username/agritrade-backend
+    branch: main
+  run_command: gunicorn --worker-tmp-dir /dev/shm --workers 2 --bind 0.0.0.0:8080 myapiproject.wsgi:application
+  environment_slug: python
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  http_port: 8080
+  routes:
+  - path: /
+  health_check:
+    http_path: /api/health/
+    initial_delay_seconds: 30
+    period_seconds: 10
+    timeout_seconds: 5
+    failure_threshold: 3
+    success_threshold: 2
+  env:
+  - key: DEBUG
+    value: "False"
+  - key: DJANGO_SETTINGS_MODULE
+    value: "myapiproject.settings"
+  - key: DATABASE_URL
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+  - key: SECRET_KEY
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+  - key: ALLOWED_HOSTS
+    value: ".ondigitalocean.app,agritrade-backend.ondigitalocean.app"
+  - key: CORS_ALLOWED_ORIGINS
+    value: "https://agritrade-frontend.ondigitalocean.app"
+  - key: REDIS_URL
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+
+databases:
+- name: agritrade-db
+  engine: PG
+  size: basic-xs
+  version: "15"
+  production: true
+
+workers:
+- name: celery-worker
+  source_dir: /
+  run_command: celery -A myapiproject worker --loglevel=info
+  environment_slug: python
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  env:
+  - key: DATABASE_URL
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET
+  - key: REDIS_URL
+    scope: RUN_AND_BUILD_TIME
+    type: SECRET

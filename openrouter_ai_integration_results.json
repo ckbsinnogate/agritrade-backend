@@ -1,0 +1,88 @@
+{
+  "connection_test": {
+    "success": true,
+    "api_status": "Connected and functional",
+    "available_models": 315,
+    "agriconnect_models": {
+      "crop_analysis": true,
+      "disease_detection": false,
+      "market_prediction": false,
+      "farmer_assistant": true,
+      "yield_prediction": true
+    },
+    "test_response": "Certainly! Here are some agricultural tips and advice that may be helpful for farmers in Ghana:\n\n1. Crop Selection:\n   - Choose crops that are well-suited to Ghana's tropical climate, such as yams, cassava, plantains, maize, rice, and various fruits and vegetables.\n   - Consider introducing high-value crops like cocoa, coffee, and cashews, which are important cash crops in Ghana.\n   - Diversify your crop selection",
+    "connection_timestamp": "2025-07-04T04:26:22.159634"
+  },
+  "crop_recommendations": {
+    "success": true,
+    "farmer_profile": {
+      "name": "Akosua Mensah",
+      "region": "Ashanti",
+      "farm_size_hectares": 4.2,
+      "experience_years": 12,
+      "previous_crops": [
+        "Cocoa",
+        "Plantain",
+        "Cassava"
+      ],
+      "investment_capacity_ghs": 18000,
+      "risk_tolerance": "medium",
+      "crops": [
+        "Cocoa",
+        "Plantain"
+      ],
+      "soil_type": "Forest Oxisols",
+      "irrigation": "Rain-fed"
+    },
+    "ai_model": "anthropic/claude-3.5-sonnet",
+    "recommendations": "\ud83c\udf31 CROP RECOMMENDATIONS FOR AKOSUA MENSAH\nLocation: Ashanti Region | Season: Major Rainy Season\n\nTOP 5 RECOMMENDED CROPS:\n\n1. MAIZE (HYBRID VARIETIES)\n- Reasoning: Excellent fit for Ashanti's rainfall pattern\n- Yield: 4-5 MT/hectare\n- Revenue: GHS 28,000-35,000/harvest\n- Risk: LOW-MEDIUM\n- Planting: March-April\n- Resources:\n  * Seeds: GHS 1,200/ha\n  * Fertilizer: GHS 2,000/ha\n  * Labor: 8-10 workers/harvest\nMarket Outlook: Strong domestic demand, stable prices\n\n2. CHILI PEPPERS\n- Reasoning: High value, good for intercropping\n- Yield: 8-10 MT/hectare\n- Revenue: GHS 45,000-55,000/harvest\n- Risk: MEDIUM\n- Planting: April-May\n- Resources:\n  * Seeds: GHS 800/ha\n  * Fertilizer: GHS 1,800/ha\n  * Labor: 12-15 workers/harvest\nMarket Outlook: Growing export potential\n\n3. PLANTAIN (IMPROVED VARIETIES)\n- Reasoning: Builds on existing experience\n- Yield: 15-18 MT/hectare\n- Revenue: GHS 32,000-38,000/harvest\n- Risk: LOW\n- Planting: April-May\n- Resources:\n  * Suckers: GHS 1,500/ha\n  * Fertilizer: GHS 1,600/ha\n  * Labor: 6-8 workers/harvest\nMarket Outlook: Steady local demand\n\n4. CASSAVA (IMPROVED VARIETIES)\n- Reasoning: Drought resistant, existing expertise\n- Yield: 20-25 MT/hectare\n- Revenue: GHS 25,000-30,000/harvest\n- Risk: LOW\n- Planting: March-April\n- Resources:\n  * Stems: GHS 900/ha\n  * Fertilizer: GHS 1,400/ha\n  * Labor: 10-12 workers/harvest\nMarket Outlook: Growing industrial demand\n\n5. VEGETABLES (TOMATOES & CABBAGE)\n- Reasoning: Quick returns, high market value\n- Yield: Various\n- Revenue: GHS 40,000-50,000/harvest\n- Risk: MEDIUM-HIGH\n- Planting: March-April\n- Resources:\n  * Seeds: GHS 1,000/ha\n  * Fertilizer: GHS 2,200/ha\n  * Labor: 15-20 workers/harvest\nMarket Outlook: Strong urban market demand\n\nSPECIFIC RECOMMENDATIONS:\n\n1. Investment Strategy:\n- Allocate 2 ha for maize\n- 1 ha for vegetables\n- 1.2 ha for plantain/cassava mix\n\n2. Risk Management:\n- Practice crop rotation\n- Implement drip irrigation\n- Use climate-smart farming techniques\n\n3. Market Access:\n- Connect with local aggregators\n- Consider joining farmer cooperatives\n- Explore digital marketing platforms\n\n4. Resource Planning:\nTotal Investment Needed:\n- Seeds/Planting Materials: GHS 5,000\n- Fertilizers: GHS 7,000\n- Labor: GHS 4,000\n- Equipment: GHS 2,000\n\nNEXT STEPS:\n1. Soil testing (GHS 200)\n2. Purchase improved seeds\n3. Prepare land by early March\n4. Set up irrigation system\n5. Arrange labor contracts\n\n\ud83d\udcf1 Need more specific details? Reply with your question.",
+    "analysis_timestamp": "2025-07-04T04:26:41.861033",
+    "confidence_level": "high",
+    "processing_time_ms": 1138
+  },
+  "market_prediction": {
+    "success": false,
+    "error": "Market API Error: 400",
+    "message": "{\"error\":{\"message\":\"google/gemini-pro is not a valid model ID\",\"code\":400},\"user_id\":\"user_2yc7MqdX2TTpRxs7LgyJdbwsquq\"}"
+  },
+  "assistant_response": {
+    "success": true,
+    "question": "What's the best time to harvest my cocoa pods this season?",
+    "language": "en",
+    "farmer_context": {
+      "name": "Akosua Mensah",
+      "region": "Ashanti",
+      "farm_size_hectares": 4.2,
+      "experience_years": 12,
+      "previous_crops": [
+        "Cocoa",
+        "Plantain",
+        "Cassava"
+      ],
+      "investment_capacity_ghs": 18000,
+      "risk_tolerance": "medium",
+      "crops": [
+        "Cocoa",
+        "Plantain"
+      ],
+      "soil_type": "Forest Oxisols",
+      "irrigation": "Rain-fed"
+    },
+    "ai_model": "meta-llama/llama-3.2-90b-vision-instruct",
+    "response": "Hello farmer! I'm happy to help.\n\nIn the Ashanti region, the best time to harvest your cocoa pods depends on the stage of ripeness. You want to pick them when they're fully ripe, but not overripe.\n\n**Check for ripeness:**\n\n* Gently twist the pod; a ripe pod will come off the tree easily.\n* Check the color: ripe pods turn from green to yellow, orange, or red, depending on the variety.\n* Give it a sniff: ripe pods give off a sweet, fruity aroma.\n\n**Harvesting time:**\n\n* In the Ashanti region, the main cocoa harvest season is from October to January.\n* However, some varieties may be ready earlier or later, so keep an eye on your pods.\n* Harvest your pods every 2-3 weeks to ensure you don't miss any ripe ones.\n\n**Tips:**\n\n* Use a sharp knife or pruning shear to cut the pod from the tree, leaving a small piece of stem attached.\n* Handle the pods carefully to avoid damaging them.\n* Store your harvested pods in a dry, well-ventilated area to prevent mold and rot.\n\n**Local term:** In Twi, the local language spoken in the Ashanti region, the word for \"ripe\" is \"\u025bhuru\" (eh-hoo-roo). So, when checking your pods, you can say \"\u025bhuru cocoa\" (eh-hoo-roo koh-koh) to remind yourself to look for ripe ones!\n\nBy following these tips, you'll be able to harvest your cocoa pods at the right time and enjoy a good yield. Happy harvesting!",
+    "response_timestamp": "2025-07-04T04:26:55.692118",
+    "assistant_confidence": "high"
+  },
+  "yield_prediction": {
+    "success": false,
+    "error": "Yield API Error: 402",
+    "message": "{\"error\":{\"message\":\"This request requires more credits, or fewer max_tokens. You requested up to 2000 tokens, but can only afford 428. To increase, visit https://openrouter.ai/settings/credits and upgrade to a paid account\",\"code\":402,\"metadata\":{\"provider_name\":null}},\"user_id\":\"user_2yc7MqdX2TTpRxs7LgyJdbwsquq\"}"
+  },
+  "capabilities_summary": {
+    "Enhanced Crop Recommendations": true,
+    "Market Price Prediction": false,
+    "Intelligent Farmer Assistant": true,
+    "Advanced Yield Prediction": false
+  },
+  "integration_status": "Needs Investigation"
+}

@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Environment files
+.env
+.env.*
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Development and documentation files
+*.txt
+*.bat
+*.ps1
+*.sh
+*.md
+*.html
+*.css
+*.tsx
+*.jsx
+
+# Backup and test files
+*.bak
+*.backup
+backup_*/
+logs/
+test_*/
+*_test.py
+*_tests.py
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Keep essential deployment files
+!requirements.txt
+!runtime.txt
+!README.md

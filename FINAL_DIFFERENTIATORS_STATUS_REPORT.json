@@ -1,0 +1,51 @@
+{
+  "report_date": "2025-07-12T04:08:49.745778",
+  "overall_compliance": "29%",
+  "completed_differentiators": 2,
+  "total_differentiators": 7,
+  "differentiators_status": {
+    "1. Blockchain Traceability": {
+      "status": "ERROR \u274c",
+      "compliance": "0%",
+      "details": "Import error: cannot import name 'TraceabilityRecord' from 'traceability.models' (C:\\Users\\user\\Desktop\\mywebproject\\backup_v1\\myapiproject\\traceability\\models.py)",
+      "evidence": "Models not accessible"
+    },
+    "2. Escrow Payment System": {
+      "status": "COMPLETE \u2705",
+      "compliance": "100%",
+      "details": "16 escrows, 75 milestones, 2 disputes, 10 gateways",
+      "evidence": "Multi-stage escrow with dispute resolution operational"
+    },
+    "3. Multi-Warehouse Network": {
+      "status": "ERROR \u274c",
+      "compliance": "0%",
+      "details": "Import error: cannot import name 'InventoryLevel' from 'warehouses.models' (C:\\Users\\user\\Desktop\\mywebproject\\backup_v1\\myapiproject\\warehouses\\models.py)",
+      "evidence": "Models not accessible"
+    },
+    "4. SMS/OTP Integration": {
+      "status": "PARTIAL \u26a0\ufe0f",
+      "compliance": "80%",
+      "details": "1 providers, 0 messages, 0 OTP codes",
+      "evidence": "Models exist but needs live testing verification"
+    },
+    "5. Organic/Non-Organic Certification": {
+      "status": "ERROR \u274c",
+      "compliance": "0%",
+      "details": "Import error: Cannot resolve keyword 'certificate_type' into field. Choices are: blockchain_hash, blockchain_verified, certificate_number, certification_type, created_at, expiry_date, id, issue_date, issuing_body, product, product_id, status, updated_at, verification_documents",
+      "evidence": "Models not accessible"
+    },
+    "6. Multi-Currency Support": {
+      "status": "COMPLETE \u2705",
+      "compliance": "100%",
+      "details": "9 currencies: BTC, ETH, GHS, KES, NGN, UGX, USD, USDC, ZAR",
+      "evidence": "Comprehensive African currency support with real-time conversion"
+    },
+    "7. Climate-Smart Features": {
+      "status": "FRAMEWORK READY \u26a0\ufe0f",
+      "compliance": "40%",
+      "details": "Basic agricultural framework exists, needs weather integration",
+      "evidence": "Ready for weather API integration and seasonal planning features"
+    }
+  },
+  "conclusion": "IN PROGRESS"
+}

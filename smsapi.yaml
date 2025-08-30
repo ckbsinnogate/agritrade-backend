@@ -1,0 +1,982 @@
+
+
+    Your API ID
+    API113898428691
+
+    Password
+    Kingsco45@1
+
+
+
+
+
+
+Version: 3.0
+1.	Sending SMS Through API
+1.1	Parameters
+1.2	Calling API using GET Request
+1.2.1	Method-1: Using Get Request
+1.2.2	Method-2: Using POST Request
+1.2.3	Response Details
+1.2.4	CallBack URL Response Details
+1.3	Enquiring Delivery Status
+1.3.1	Parameters
+1.3.2	Calling Delivery Report API Using, Method-1 Get Request
+1.3.3	Calling Delivery Report API Using, Method-2 Post Request
+1.3.4	Response Format for Both GET AND POST
+1.3.5	Response Details
+2	Managing Contact Lists through API
+2.1	Add Number to Contact List through API
+2.1.1	Parameters List
+2.1.2	How to Get Contact List ID
+2.1.3	Calling Contact List API using Method 1 (GET REQUEST)
+2.1.4	Calling Contact List API using Method 2 (POST REQUEST)
+2.1.5	Response Format for Both GET AND POST
+2.1.6	Response Details
+2.2	Deleting Number from Contact List using API
+2.2.1	Parameters List
+2.2.2	Calling Delete Contact Using API, Method 1, Get Request
+2.2.3	Calling Delete Contact Using API, Method 2, POST Request
+2.2.4	Response Format for Both GET AND POST
+2.2.5	Response Details
+3	ASMSC Verify API - Sending OTP Verification SMS
+3.1	Sending Verification SMS
+3.1.1	Calling the ASMSC Verify API using Get Request
+3.1.2	Calling the ASMSC Verify API using POST Request
+ 
+
+
+3.1.3	Response Format for Both GET AND POST
+3.1.4	Response Details
+3.2	Checking Verification Status
+3.2.1	Checking the verification Status Using Get Request
+3.2.2	Checking the verification Status Using Get Request
+3.2.3	Response Format for Both GET AND POST
+3.2.4	Response Details
+4	SenderIDRequest (API)
+5	GetSenderIDList (API)
+6	Check Balance
+7	Register Reseller Customer
+8	Register Customer
+9	Get Country List
+10	Get Time-Zone List
+11	Get Customer List
+12	Get Customer SMPP Account List
+13	Get Vendor List
+14	Receive Incoming
+15	SenderID Status
+16	Send Voice OTP
+17	Voice OTP Status
+18	Add Vendor Invoice
+19	Add Vendor Payment
+20	Recharge Customer
+ 
+1.0 Sending SMS Through Web API
+Send Single SMS to URL: https://api.avrsms.com/api/SendSMS
+To send single text to multiple numbers using a single submission use below link https://api.avrsms.com/api/SendSMSMulti
+
+
+1.1	Parameters
+Parameter Name	Required	Description			Example
+api_id	Yes	Your API ID Sent in Email		API43404236	
+api_password	Yes	Your SPI
+Password Sent in Email	password@123
+sms_type	Yes	SMS Type Promotional / Transactional	P for Promotional T for Transactional
+encoding	Yes	SMS Encoding Text, Unicode etc.	T for Text
+U for Unicode
+FS for Flash Message
+UFS for Unicode Flash Message
+sender_id	Yes	Your Sender ID	Your Registered Sender ID
+phonenumber	Yes	Recipient Phone Number	Phone Number Should No Contain + Sign
+Phone Number Format is Country Code + Phone Number
+Example: 919769993671
+In case of bulk submit , separate each number with a comma like 911234567890,6330000078,971543036292
+templateid	Optional	Required If You Want to Send Existing Template.
+Check Template ID in Customer Panel	Template ID from Customer Panel Example: 10
+textmessage	Conditional	If Template ID is provided text	Text of SMS Message to Send
+ 
+
+		message is not required	
+V1	Optional	Variable 1 To Replace in Template	Any Data for Variable 1 You Want to Replace
+V2	Optional	Variable 2 To Replace in Template	Any Data for Variable 2 You Want to Replace
+V3	Optional	Variable 3 To
+Replace in Template	Any Data for Variable 3 You Want to Replace
+V4	Optional	Variable 4 To Replace in
+Template	Any Data for Variable 4 You Want to Replace
+V5	Optional	Variable 5 To Replace in
+Template	Any Data for Variable 5 You Want to Replace
+ValidityPeriodInSeconds	Optional	Message
+validity period (Expiry time)	Default is 2 days, you can set it manually int value as second like 60 for 1 min.
+uid	Optional	Message reference variable, this value will return as it is in quick response and delivery	xyz
+callback_url	Optional	The CallBack- URL where you wanna delivery report. We will post the json data of
+delivery.	https://xyz.com/
+pe_id	Optional	DLT parameter	xyz
+template_id	Conditional	DLT parameter (if given pe_id then this field is required )	xyz
+ 
+
+
+Note: uid and callback_url parameters is not supported with SendSMSMulti API. Only for SendSMS API.
+
+1.2	Calling The API
+1.2.1	Method-1: Using Get Request
+Example:
+
+1.2.2	Method-2: Using POST Request
+
+
+Post Request JSON Format
+{
+"api_id": yourapiid, "api_password": yourapipassword, "sms_type": T,
+"encoding": T, "sender_id": ASMSC,
+"phonenumber": 919769993671, "templateid": null, "textmessage":test message, "V1": null,
+"V2": null,
+"V3": null,
+"V4": null,
+"V5": null, "ValidityPeriodInSeconds": 60,
+"uid":"xyz", "callback_url":"https://xyz.com/", "pe_id":NULL, "template_id":NULL
+}
+ 
+
+1.2.3	: Response Format for Both GET AND POST
+
+ 
+{
+
+
+
+
+}
+
+Response Details.
+ 
+
+"message_id": 4125, "status": "S",
+"remarks": "Message Submitted Successfully" ,
+“uid”: “xyz”
+ 
+
+message_id	System Generated Message ID
+status	S = Submitted
+F = Failed to Submit
+remarks	Description of the status
+uid	Reference Value as given
+
+1.2.4	:  CallBack URL Response Details
+
+{
+"message_id": 32,
+"PhoneNumber": "9713254", "SMSMessage": "Test Message", "MessageType": "Default", "MessageLength": 159,
+"MessageParts": 1,
+"ClientCost": 1, "DLRStatus": "Delivered",
+"SMSID": "9cbd20a1-0cd8-420e-b384-5767b7df7a87",
+"ErrorCode": 0,
+"ErrorDescription": "000",
+"SentDateUTC": "2017-05-05T10:16:39.523",
+"Remarks": "OK" ,
+“uid” : “xyz”
+}
+
+
+
+message_id	Message ID of the request
+PhoneNumber	Phone Number to which message was sent
+ 
+
+SMSMessage	Text of the SMS message
+MessageType	Message Encoding
+MessageLength	Length of Message
+MessageParts	No of Message parts
+ClientCost	Amount Deducted from account
+DLRStatus	Delivery Status Can Be One Of the following
+1.	Pending
+2.	Delivered
+3.	Undeliverable
+4.	Acknowledged
+5.	Expired
+6.	Accepted
+7.	Rejected
+8.	Unknown
+9.	Failed
+10.	DND
+SMSID	Carrier Generated SMS ID
+ErrorCode	Error Code If Any
+ErrorDescription	Error Description If Any
+SentDateUTC	SMS Sent Date Time in UTC (Universal Time Coordinate)
+Remarks	Remarks for the Request
+uid	Reference parameter as you submit with sms
+
+
+
+
+
+1.3	Query Delivery Report / Message Status
+URL: https://api.avrsms.com/api/GetDeliveryStatus
+1.3.1	Parameters
+Parameter Name	Required	Description	Example
+ 	Conditional	Message ID You Received at The Time of Submit (Not Required if your are using uid parameter)	4134
+
+message_id			
+uid	Conditional	Reference value as you sent and received at the time of submit message	Xyz
+ 
+
+
+api_id	
+Yes	
+Your API ID	
+API1234
+api_password	Yes	Your API password	1234xyz
+
+1.3.2	Calling Delivery Report API Using, Method-1 Get Request
+Example:
+https://api.avrsms.com/api/GetDeliveryStatus?api_id=API123&api_password=123xyz&message_id=2323&uid=xyz
+
+
+1.3.3	Calling Delivery Report API Using, Method-2 Post Request
+Post Request JSON Format
+{
+“api_id” : “API123”, “api_password” : “123” " message_id ": 32423, “uid” : “xyz”
+}
+
+1.3.4	Response Format for Both GET AND POST
+{
+"message_id": 32,
+"PhoneNumber": "9713254", "SMSMessage": "Test Message", "MessageType": "Default", "MessageLength": 159,
+"MessageParts": 1,
+"ClientCost": 1, "DLRStatus": "Delivered",
+"SMSID": "9cbd20a1-0cd8-420e-b384-5767b7df7a87",
+"ErrorCode": 0,
+"ErrorDescription": "000",
+"SentDateUTC": "2017-05-05T10:16:39.523",
+"Remarks": "OK" ,
+“uid” : “xyz”
+}
+ 
+
+
+1.3.5	Response Details
+
+message_id	Message ID of the request
+PhoneNumber	Phone Number to which message was sent
+SMSMessage	Text of the SMS message
+MessageType	Message Encoding
+MessageLength	Length of Message
+MessageParts	No of Message parts
+ClientCost	Amount Deducted from account
+DLRStatus	Delivery Status Can Be One Of the following
+11.	Pending
+12.	Delivered
+13.	Undeliverable
+14.	Acknowledged
+15.	Expired
+16.	Accepted
+17.	Rejected
+18.	Unknown
+19.	Failed20.	DND
+SMSID	Carrier Generated SMS ID
+ErrorCode	Error Code If Any
+ErrorDescription	Error Description If Any
+SentDateUTC	SMS Sent Date Time in UTC (Universal Time Coordinate)
+Remarks	Remarks for the Request
+uid	Reference parameter as you submit with sms
+
+
+
+
+2.0	Managing Contact Lists through API
+2.1	Add Number to Contact List through API
+2.1.1	Parameters List
+Parameter Name	Required	Description	Example
+ 
+
+api_id	Yes	Your API ID Received in the email or you can get it from your customer panel	API0896731286
+api_password	Yes	Your API Password Received in the email or can change API password from customer panel	password@123
+contact_list_id	Yes	Create Contact List in Customer Panel and Get the ID from There See Image Below for Detailed Explanation	1
+contact_name	Yes	Name of the person you want to save	John
+contact_number	Yes	Contact Number of the person you want to save	919769993671
+
+2.1.2	How to Get Contact List ID
+Step 1. Login in your Customer Panel At https://retail.avrsms.com
+
+Step 2. Go to Contact List in The Left Side Menu Bar
+
+Step 3. Click on Add New Contact List Button & Create a new Contact List
+
+
+
+Step 4. Enter Contact List Name and Click Create New Contact List
+
+ 
+Step 5 : Once Created You Will Find Contact List ID in the Grid Below
+
+Yellow Color Highlighted Is Your Contact List ID
+
+
+
+
+
+
+
+
+
+2.1.3	Calling Contact List API using Method 1 (GET REQUEST)
+
+Example: https://api.avrsms.com/api/AddContact?api_id=API3434144906&api_password=passwor d&contact_list_id=1&contact_name=Test&contact_number=919769993671
+
+2.1.4	Calling Contact List API using Method 2 (POST REQUEST)
+
+URL: https://api.avrsms.com/api/AddContact
+
+Post Request JSON Format
+{
+"api_id": yourapiid, "api_password": yourapipassword, "contact_list_id": 1, "contact_name": Test, "contact_number": 91999020238,
+}
+ 
+
+
+2.1.5	Response Format for Both GET AND POST
+{
+"contact_id": 4, "status": "S",
+"remarks": "Contact Created Sucessfully"
+}
+2.1.6	Response Details
+
+contact_id	System generated id of your contact save it for future deletion of this contact via api.
+status	S = Contact Created Successfully F
+= Failed to create contact
+remarks	Description of the status
+
+
+
+2.2	Deleting Number from Contact List using API
+2.2.1	Parameters List
+
+Parameter Name	Required	Description	Example
+api_id	Yes	Your API ID Received in the email or you can get it from your customer panel	API0896731286
+api_password	Yes	Your API Password Received in the email or can change API password from customer panel	password@123
+contact_id	Yes	Contact ID You Have Get While Creating the contact from api	123
+
+
+2.2.2	Calling Delete Contact Using API, Method 1, Get Request Example:
+https://api.avrsms.com/api/DeleteContact?api_id=API4das62144906&api_password=pas sword&contact_id=4
+ 
+
+2.2.3	Calling Delete Contact Using API, Method 2, POST Request URL: https://api.avrsms.com/api/DeleteContact
+Post Request JSON Format
+{
+"api_id": yourapiid, "api_password": yourapipassword, "contact_id ": 1,
+}
+
+2.2.4	Response Format for Both GET AND POST
+{
+"contact_id": 0, "status": "S",
+"remarks": "Contact Created Successfully"
+}
+2.2.5	Response Details
+
+contact_id	Value Will Always Be Zero
+status	S = Contact Deleted Successfully F
+= Failed to delete contact
+remarks	Description of the status
+
+
+3.0	ASMSC Verify API - Sending OTP Verification SMS
+This API helps you to verify user phone number using OTP (One Time Password).
+ 
+
+
+
+
+
+3.1	Sending Verification SMS
+3.1.1	Calling the ASMSC Verify API using Get Request Example:
+
+
+https://api.avrsms.com/api/Verfiy?api_id=API651344002&api_password=password&bran d=aSMSC_name&phonenumber=9199206824&sender_id=AVRSMS
+3.1.2	Calling the ASMSC Verify API using POST Request URL: https://api.avrsms.com/api/Verify
+Post Request JSON Format
+{
+"api_id": yourapiid, "api_password": yourapipassword, "brand": ASMSC_Name, "phonenumber": 91999664445, "sender_id": ASMSC,
+}
+
+3.1.3	Response Format for Both GET AND POST
+{
+"verfication_id": 4, "status": "S",
+"remarks": "Verification Code Sent Successfully"
+}
+ 
+3.1.4	Response Details
+
+verfication_id	System generated id of your verification request save it to check the verification status
+status	S = Verification SMS Sent Successfully F
+= Failed to send verification SMS
+remarks	Description of the status
+
+
+
+3.2	Checking Verification Status
+3.2.1	Checking the verification Status Using Get Request.
+
+Example: https://api.avrsms.com/api/VerifyStatus?verfication_id=2&verfication_code=4022
+
+
+3.2.2	Checking the verification Status Using Get Request.
+URL: https://api.avrsms.com/api/VerifyStatus
+Post Request JSON Format
+{
+"verfication_id": 2,
+"verfication_code": 4022,
+}
+
+
+
+3.2.3	Response Format for Both GET AND POST
+{
+"verfication_id": 2, "status": "F",
+"remarks": "Verification Code is Not Verified"
+}
+ 
+3.2.4	Response Details
+
+verfication_id	Verification ID You Sent in the Request
+status	V = Verification Successfully F
+= Verification Failed
+remarks	Description of the status
+
+
+
+
+4.0 SenderIDRequest (API)
+URL: https://api.avrsms.com/api/SenderIDRequest
+Methods Supported : GET & POST Parameters List : For POST JSON : -
+{
+ 
+
+
+
+
+
+}
+
+
+For Get Request :
+ 
+"api_id" : "Your API ID", "api_password" : "Your API Password", "sender_id": "Desired Sender ID", "country" : "Desired Country Name",
+"remarks" : "Remarks Related To Sender ID"
+ 
+
+https://api.avrsms.com/api/SenderIDRequest?api_id=youapiid&api_password=yourapipassword&sender_id=you rsenderid&country=yourcountryname&remarks=remarks
+
+Reponse JSON:
+
+{
+"status": "S",
+"remarks": "Sender ID Request Created Sucessfully"
+}
+
+status = S (Successful) status = F (Failed)
+ 
+
+
+
+
+
+5.0 GetSenderIDList (API)
+URL : https://api.avrsms.com/api/GetSenderIDList
+
+Methods Supported : GET & POST Parameters List : For POST JSON : -
+
+{
+"api_id" : "Your API ID", "api_password" : "Your API Password",
+}
+
+For Get Request :
+
+https://api.avrsms.com/api/GetSenderIDList?api_id=youapiid&api_password=yourapipassword
+
+Reponse JSON
+
+[
+{
+"sender_id": "SMS UPDATE", "country": "United Arab Emirates"
+},
+{
+"sender_id": "ASMSC",
+"country": "United Arab Emirates"
+}
+]
+
+
+
+
+6.0 Check Balance
+URI: https://api.avrsms.com/api/CheckBalance
+ 
+
+Input Parameters :
+
+Input Parameters	Required
+1. api_id	Yes
+2. api_password	yes
+
+
+a)	Method-1: Using Get Request
+
+https://api.avrsms.com/api/CheckBalance?api_id=yourapiid&api_password=yourapipassword
+
+b)	Method-2: Using Post Request
+Post Request Json Format
+{
+"api_id ": your api id, "api_password": your api password
+
+}
+
+Response Details:
+
+BalanceAmount: balance amount in decimal CurrenceCode : amount currence code
+
+
+7.0. Register Reseller Customer
+
+URL: https://api.avrsms.com/api/RegisterResellerCustomer
+
+Auth : Basic Auth ( Username as RegistrationUsername, Password as RegistrationPassword)
+
+Note: For RegistrationUsername and RegistrationPassword you can contact to your administrator or support team.
+
+
+Input Parameters :
+
+
+Input Parameters	Required	Default Value
+Username	Yes	ABC123
+ 
+
+Password	yes	12345
+CompanyName	Yes	aSMSC
+CompanyEmail	Yes	avrsmsc@asmsc.com
+
+BillingEmail	Yes	avrsmsc@asmsc.com
+
+Phone	Yes	9197xxxx23
+CustomerPlanID	Yes	0
+DefaultSMSPrice	Yes	0
+CurrencyID	Yes	50
+BalanceAmount	Yes	0
+TimeZoneID	Yes	1
+TemplateLocked	Yes	false
+CountryID	Yes	0
+SenderID	Yes	TST
+
+
+
+
+
+
+a) Method-2: Using Post Request Post Request Json Format
+{
+"Username": ”Reseller account username”, "Password": “Reseller account password”, "CompanyName": “Reseller clients company name”, "CompanyEmail": “Reseller clients company name “, "BillingEmail": “Reseller clients billing email”, "Phone": “Reseller clients phone number”, "CustomerPlanID": customers plan id , "DefaultSMSPrice: customers default price, "CurrencyID": currency id,
+"BalanceAmount": default balance amount, "TimeZoneID": time zone , "TemplateLocked": true or false, "CountryID": country id of customer, "SenderID": sender id
+}
+ 
+
+
+Response Details:
+
+UserRegistered: 1 for success, 0 for fail
+Remarks : Description of the status
+
+
+8.0. Register Customer
+
+URL: https://api.avrsms.com/api/RegisterCustomer
+
+Auth : Basic Auth ( Username as RegistrationUsername, Password as RegistrationPassword)
+
+Note: For RegistrationUsername and RegistrationPassword you can contact to your administrator or support team.
+
+
+Input Parameters :
+
+
+Input Parameters	Required	Default Value
+CompanyName	Yes	AVRSMSC
+CompanyEmail	Yes	avrsmsc@asmsc.com
+
+BillingEmail	Yes	avrsmsc@asmsc.com
+
+Phone	Yes	9197xxxx71
+CustomerPlanID	Yes	0
+CustomerRouteID	Yes	0
+DefaultSMSPrice	Yes	0
+CurrencyID	Yes	50
+BalanceAmount	Yes	0
+TimeZoneID	Yes	1
+TemplateLocked	Yes	false
+CountryID	Yes	0
+ 
+
+
+
+a) Method-2: Using Post Request Post Request Json Format
+{
+"CompanyName": “clients company name”, "CompanyEmail": “clients company name” , "BillingEmail": “clients billing email”, "Phone": “clients phone number”, "CustomerPlanID": customers plan id , "CustomerRouteID": customers plan id , "DefaultSMSPrice: customers default price, "CurrencyID": currency id, "BalanceAmount": default balance amount, "TimeZoneID": time zone , "TemplateLocked": true or false, "CountryID": country id of customer
+}
+
+Response Details:
+
+UserRegistered: 1 for success, 0 for fail
+Remarks : Description of the status
+
+
+9.0	Get Country List
+
+URL: https://api.avrsms.com/api/GetCountryList
+Type: POST
+
+Auth : Basic Auth ( Username as RegistrationUsername, Password as RegistrationPassword)
+
+Note: For RegistrationUsername and RegistrationPassword you can contact to your administrator or support team.
+
+
+Response Details: [
+{
+“DialingCodeID” : 1,
+ 
+
+“CountryRealName” : “India”, “ISOName” : “IN”,
+“ISO3Code” : “IND”
+}
+]
+
+
+
+10.0	Get Time-Zone List
+
+URL: https://api.avrsms.com/api/GetTimeZoneList
+Type: POST
+
+Auth : Basic Auth ( Username as RegistrationUsername, Password as RegistrationPassword)
+
+Note: For RegistrationUsername and RegistrationPassword you can contact to your administrator or support team.
+
+
+Response Details: [
+{
+“TimeZoneID” : 1,
+“Display” : “(GMT-12:00) International Date Line West”
+}
+]
+
+11.0	Get Customer List
+
+URL: https://api.avrsms.com/api/ViewCustomerList
+
+Type: POST
+Optional parameter : CustomerID
+
+Auth : Basic Auth ( Username as APIUsername, Password as APIPassword)
+
+Note: For APIUsername and APIPassword you can contact to your administrator or support team.
+ 
+
+
+Response Details: [
+{
+“CustomerID” : 1, “CustomerType” : “CLIENT”, “CompanyName” : “test client”,
+“CompanyEmail” : “testclient@test.com”, “BillingEmail” : “testclient@test.com”, “Phone” : “222222222”,
+“Username” : “SAU77252123”
+}
+]
+12.0	Get Customer SMPP Account List
+
+URL: https://api.avrsms.com/api/ViewCustomerSMPPAccountList
+
+Type: POST
+Optional Parameter: CustomerID, CustomerSMPPAccountID
+
+Auth : Basic Auth ( Username as APIUsername, Password as APIPassword)
+
+Note: For APIUsername and APIPassword you can contact to your administrator or support team.
+
+
+Response Details: [
+{
+“CustomerSMPPAccountID” : 1, “SMPPUsername” : “test_SM1”, “SMPPAccountName” : “SM1”
+}
+]
+
+13.0	Get Vendor List
+
+URL: https://api.avrsms.com/api/ViewVendorList
+
+Type: POST
+Optional Parameter: VendorId
+ 
+
+
+Auth : Basic Auth ( Username as APIUsername, Password as APIPassword)
+
+Note: For APIUsername and APIPassword you can contact to your administrator or support team.
+
+
+Response Details: [
+{
+“VendorID” : 1, “VendorName” : “test_SM1”,
+“VendorEmail” : “test@test.com”, “VendorBillngEmail” : “test@test.com”, “VendorTechnicalEmail” : “test@test.com”, “VendorPhone” : “123456”,
+“VendorAddress” : “Xyz”
+}
+]
+
+
+14.0	Receive Incoming
+
+URL: https://api.avrsms.com/api/ReceiveIncoming
+
+
+
+Input Parameters :
+
+
+Input Parameters	Required	Default Value
+ChannelNumber	Yes	2222222
+MessageText	Yes	Text msg
+IncomingNumber	Yes	91xxxxxx1234
+Circle	No	xyz
+Operator	No	xyz
+Time	No	0
+ 
+
+
+Note: All parameters are dynamic , you have to set parameter name in incoming vendor in admin panel and use the same parameters name as you mention for the same.
+
+a) Method-2: Using Get Request
+https://api.avrsms.com/api/ReceiveIncoming?ChannelNumber=22222&MessageText=test msg&IncomingNumber=9123123211212
+
+
+a) Method-2: Using Post Request
+
+URL: https://api.avrsms.com/api/ReceiveIncoming
+
+
+For aSMSC V2 : Post Json data
+{
+"ChannelNumber": 2222222, "MessageText": “test” , "IncomingNumber": 12323123123
+}
+
+For aSMSC V3 : Post Form data
+
+Response Details: Success / Bad Request
+
+Auto Post: Receive data in Request Form Body Content Type: application/json
+Received Parameters: IncomingNumber, MessageText, ChannelNumber, Keyword
+
+
+15.0	SenderID Status
+
+URL: https://api.avrsms.com/api/SenderIDStatus
+
+
+Input Parameters :
+
+
+Input Parameters	Required	Default Value
+api_id	Yes	API123
+api_password	Yes	123xyz
+ 
+
+request_id	Yes	1234
+
+
+A)	Method-1: Using Get Request
+https://api.avrsms.com/api/SenderIDStatus?api_id=API123&api_password=123&request_id=123
+
+
+
+B)	Method-2: Using Post Request
+URL: https://api.avrsms.com/api/SenderIDStatus
+
+
+Post Json data
+{
+"api_id": “API123”, "api_password": “wd123” , "request_id": 123
+}
+
+Response Details: Failed:
+{
+“request_id”:123, “status”: ”F”,
+“remarks”: “API Password Is Invalid”
+}
+Success:
+{
+“request_id”: 123, “company_name”: ”acdsa”, “country”: ”india”,
+“sender_id”: ”TST”, “status”: “Approved”,
+“created_time”: ”2021-05-20 15:30:49.730”,
+“approval_time” : ”2021-05-20 15:30:49.730”,
+“request_deleted”: 0
+}
+
+
+
+16.0	Send Voice OTP
+ 
+
+
+URL: https://api.avrsms.com/api/SendVoiceOTP
+
+Input Parameters :
+
+Input Parameters	Required	Default Value
+api_id	Yes	API123
+api_password	Yes	123xyz
+phonenumber	Yes	1234123123
+otp_code	Yes	123
+
+
+A)	Method-1: Using Get Request
+
+https://api.avrsms.com/api/SendVoiceOTP?api_id=API123&api_password=123&phonenumber=98123123123&otp_ code=123
+
+B)	Method-2: Using Post Request
+
+URL: https://api.avrsms.com/api/SendVoiceOTP
+
+
+Post Json data
+{
+"api_id": “API123”, "api_password": “wd123” , "phonenumber": 123234234123,
+“otp_code” : 123
+}
+
+Response Details:
+
+{
+“message_id”:123, “status”: ”S”,
+“remarks”: “Submitted Successful”
+}
+ 
+17.0	Voice OTP Status
+
+URL: https://api.avrsms.com/api/VoiceOTPStatus
+Input Parameters :
+
+Input Parameters	Required	Default Value
+api_id	Yes	API123
+api_password	Yes	123xyz
+message_id	Yes	123
+
+A)	Method-1: Using Get Request
+https://api.avrsms.com/api/VoiceOTPStatus?api_id=API123&api_password=123&message_id=123
+
+
+B)	Method-2: Using Post Request
+
+URL: https://api.avrsms.com/api/VoiceOTPStatus
+
+Post Json data
+{
+"api_id": “API123”, "api_password": “wd123” , "message_id": 123
+}
+
+Response Details:
+{
+“PhoneNumber”:123, “status”: ”Delivered”, “OTP”: “123”,
+“Remarks”:”OK”, “JobDetailID”:123
+}
+ 
+18.0	Add Vendor Invoice
+URL: https://api.avrsms.com/api/AddVendorInvoice
+Type: POST
+Auth : Basic Auth ( Username as APIUsername, Password as APIPassword)
+
+Note: For APIUsername and APIPassword you can contact to your administrator or support team.
+
+Input Parameters :
+
+Input Parameters	Required	Default Value
+vendor_id	Yes	1
+amount	Yes	123.0
+invoice_date	Yes	Should be less than or equals to Today Date (YYYY-
+mm-dd)
+invoice_number	Yes	Ix1231234
+billing_start_date	Yes	Should be less than or equals to Today Date (YYYY-
+mm-dd)
+billing_end_date	Yes	Should be less than or equals to Today Date,
+Should be less than or equals to Billing Start Date
+(YYYY-mm-dd)
+
+A) Method-1: Using Post Request
+
+URL: https://api.avrsms.com/api/AddVendorInvoice
+
+Post Json data
+{
+"vendor_id": 1,
+"amount": 123.0 , "invoice_date": “YYY-mm-dd”, "invoice_number": “wd123” ,
+"billing_start_date": “YYY-mm-dd”,
+"billing_end_date": “YYY-mm-dd”
+}
+ 
+“vendor_invoice_id”:123, “status”: ”S”,
+“remarks”:”Invoice Created Successfully”,
+}
+
+19.0	Add Vendor Payment
+URL: https://api.avrsms.com/api/AddVendorPayment
+Type: POST
+Auth : Basic Auth ( Username as APIUsername, Password as APIPassword)
+
+Note: For APIUsername and APIPassword you can contact to your administrator or support team.
+
+Input Parameters :
+
+Input Parameters	Required	Default Value
+vendor_id	Yes	1
+amount	Yes	123.0
+amount_main_currency	Yes	123.0
+remarks	Yes	test
+payment_date	Yes	YYYY-mm-dd
+
+
+A) Method-1: Using Post Request
+
+URL: https://api.avrsms.com/api/AddVendorPayment
+Post Json data
+{
+"vendor_id": 1,
+"amount": 123.0 ,
+"amount_main_currency": 123.0, "remarks": “wd123” , "payment_date": “YYY-mm-dd”
+}
+ 
+“vendor_payment_id”:123, “status”: ”S”,
+“remarks”:”Payment Created Successfully”,
+}
+20.0	Recharge Customer
+URL: https://api.avrsms.com/api/Recharge
+Type: POST
+Auth : Basic Auth ( Username as APIUsername, Password as APIPassword)
+
+Note: For APIUsername and APIPassword you can contact to your administrator or support team.
+Input Parameters :
+
+Input Parameters	Required	Default Value
+user_email	Yes	test@test.com
+
+amount	Yes	123.0
+remarks	Yes	test
+recharge_date	Yes	YYYY-mm-dd
+
+A) Method-1: Using Post Request
+
+URL: https://api.avrsms.com/api/Recharge
+
+Post Json data
+{
+"user_email": “test@test.com”, "amount": 123.0 ,
+"remarks": “wd123” , "recharge_date": “YYY-mm-dd”
+}
+
+Response Details:
+{
+“customer_payment_id”:123, “status”: ”S”,
+“remarks”:”Payment Created Successfully”,
+}

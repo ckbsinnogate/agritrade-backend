@@ -1,0 +1,41 @@
+{
+  "name": "AgriConnect Ghana",
+  "description": "Digital agriculture platform for Ghana",
+  "keywords": [
+    "agriculture",
+    "ghana",
+    "payments",
+    "farmers"
+  ],
+  "website": "https://www.agriconnect.gh",
+  "repository": "https://github.com/your-repo/agriconnect-ghana",
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": {
+      "value": "agriconnect.production_settings"
+    },
+    "PAYSTACK_PUBLIC_KEY": {
+      "description": "Paystack Public Key for Ghana"
+    },
+    "PAYSTACK_SECRET_KEY": {
+      "description": "Paystack Secret Key for Ghana"
+    },
+    "PAYSTACK_WEBHOOK_SECRET": {
+      "description": "Paystack Webhook Secret"
+    },
+    "EMAIL_HOST_USER": {
+      "description": "SMTP Email Username"
+    },
+    "EMAIL_HOST_PASSWORD": {
+      "description": "SMTP Email Password"
+    }
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "heroku-redis:hobby-dev"
+  ]
+}

@@ -1,0 +1,54 @@
+# Production requirements for DigitalOcean App Platform
+# Professional Django Backend Dependencies
+# Date: August 30, 2025
+
+# Core Django
+Django==5.1.2
+djangorestframework==3.14.0
+
+# Database
+psycopg2-binary==2.9.7
+dj-database-url==2.1.0
+
+# Production server
+gunicorn==21.2.0
+whitenoise==6.6.0
+
+# Security and CORS
+django-cors-headers==4.3.1
+python-decouple==3.8
+
+# Task queue and caching
+celery==5.3.4
+redis==5.0.1
+
+# Image processing
+Pillow==10.1.0
+
+# HTTP requests
+requests==2.31.0
+
+# JSON handling
+jsonfield==3.1.0
+
+# Date and time utilities
+python-dateutil==2.8.2
+
+# Environment variable management
+environs[django]==10.0.0
+
+# API documentation (optional)
+drf-spectacular==0.26.5
+
+# Monitoring and logging
+sentry-sdk[django]==1.32.0
+
+# Performance monitoring
+django-debug-toolbar==4.2.0
+
+# Admin interface enhancements
+django-admin-interface==0.21.0
+
+# Additional utilities
+djangorestframework-simplejwt==5.3.0
+django-filter==23.3
