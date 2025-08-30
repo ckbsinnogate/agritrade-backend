@@ -19,8 +19,7 @@ services:
     health_check:
       http_path: /api/health/
     routes:
-      - path: /
-    envs:
+      - path: /    envs:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
@@ -29,6 +28,8 @@ services:
         value: "https://agritrade-frontend.ondigitalocean.app"
       - key: DJANGO_SETTINGS_MODULE
         value: "myapiproject.settings_appplatform"
+      - key: DISABLE_COLLECTSTATIC
+        value: "1"
       - key: SECRET_KEY
         scope: RUN_AND_BUILD_TIME
         type: SECRET

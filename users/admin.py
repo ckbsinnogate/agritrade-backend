@@ -31,6 +31,12 @@ from authentication.models import UserRole
 
 User = get_user_model()
 
+# Unregister the default User admin to avoid conflicts
+try:
+    admin.site.unregister(User)
+except admin.sites.NotRegistered:
+    pass
+
 
 # ======================== CUSTOM FORMS ========================
 
@@ -179,8 +185,8 @@ class VerificationStatusFilter(SimpleListFilter):
 class EnhancedUserAdmin(BaseUserAdmin):
     """Enhanced User admin with comprehensive user management features"""
     
-    add_form = UserCreationForm
-    form = UserChangeForm
+    add_form = AdminUserCreationForm
+    form = AdminUserChangeForm
     
     # Display configuration
     list_display = (
