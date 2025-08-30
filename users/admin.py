@@ -179,9 +179,14 @@ class VerificationStatusFilter(SimpleListFilter):
         return queryset
 
 
+# Unregister the default User admin to avoid conflicts
+try:
+    admin.site.unregister(User)
+except admin.sites.NotRegistered:
+    pass
+
 # ======================== ENHANCED USER ADMIN ========================
 
-@admin.register(User)
 class EnhancedUserAdmin(BaseUserAdmin):
     """Enhanced User admin with comprehensive user management features"""
     
@@ -664,6 +669,9 @@ class GovernmentOfficialProfileAdmin(admin.ModelAdmin):
 
 
 # ======================== ADMIN SITE CUSTOMIZATION ========================
+
+# Register the custom User admin
+admin.site.register(User, EnhancedUserAdmin)
 
 # Customize admin site headers
 admin.site.site_header = "AgriConnect Administration"
