@@ -1,9 +1,8 @@
 name: agritrade-backend
 services:
   - name: web
-    source_dir: /
-    github:
-      repo: your-username/agritrade-backend
+    source_dir: /    github:
+      repo: ckbsinnogate/agritrade-backend
       branch: main
       deploy_on_push: true
     run_command: |
