@@ -18,7 +18,7 @@ DEBUG = os.getenv('DEBUG', 'False').lower() in ('true', '1', 'yes')
 # Allowed hosts for production
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 if not ALLOWED_HOSTS or ALLOWED_HOSTS == ['']:
-    ALLOWED_HOSTS = ['.ondigitalocean.app', 'localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['.ondigitalocean.app', 'localhost', '127.0.0.1', 'testserver', '*']
 
 # Application definition
 INSTALLED_APPS = [
