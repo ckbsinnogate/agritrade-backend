@@ -46,14 +46,8 @@ INSTALLED_APPS = [
     'subscriptions',
     'traceability',
     'warehouses',
-    'weather',
-    'authentication',
+    'weather',    'authentication',
     'institution_dashboard',
-    'processors',
-    'blockchain',
-    'contracts',
-    'analytics',
-    'value_addition',
 ]
 
 MIDDLEWARE = [
