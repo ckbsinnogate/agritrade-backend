@@ -63,7 +63,7 @@ def api_root(request, format=None):
             'traceability': f'{base_url}/api/v1/traceability/',
             'ai_services': f'{base_url}/api/v1/ai/',
             'communications': f'{base_url}/api/v1/communications/',
-            'processors': f'{base_url}/api/v1/processors/',
+            'processing': f'{base_url}/api/v1/processing/',
             'analytics': f'{base_url}/api/v1/analytics/',
         },
         'documentation': 'Visit individual endpoint roots for detailed API documentation',
@@ -92,9 +92,8 @@ urlpatterns = [
     path('api/traceability/', include(('traceability.urls', 'traceability'), namespace='api-traceability')),
     path('api/reviews/', include(('reviews.urls', 'reviews'), namespace='api-reviews')),
     path('api/subscriptions/', include(('subscriptions.urls', 'subscriptions'), namespace='api-subscriptions')),
-    path('api/advertisements/', include(('advertisements.urls', 'advertisements'), namespace='api-advertisements')),
-    path('api/communications/', include(('communications.urls', 'communications'), namespace='api-communications')),
-    path('api/processors/', include(('processors.urls', 'processors'), namespace='api-processors')),    # API v1 Endpoints (preferred for new integrations)
+    path('api/advertisements/', include(('advertisements.urls', 'advertisements'), namespace='api-advertisements')),    path('api/communications/', include(('communications.urls', 'communications'), namespace='api-communications')),
+    path('api/processing/', include(('processing.urls', 'processing'), namespace='api-processing')),    # API v1 Endpoints (preferred for new integrations)
     path('api/v1/auth/', include(('authentication.urls', 'authentication'), namespace='api-v1-auth')),
     path('api/v1/users/', include('users.urls', namespace='api-v1-users')),
     path('api/v1/products/', include(('products.urls_simple', 'products'), namespace='api-v1-products')),    path('api/v1/orders/', include(('orders.urls', 'orders'), namespace='api-v1-orders')),    path('api/v1/purchases/', include(('orders.urls', 'orders'), namespace='api-v1-purchases')),  # Institution purchases
@@ -108,9 +107,8 @@ urlpatterns = [
     path('api/v1/traceability/', include(('traceability.urls', 'traceability'), namespace='api-v1-traceability')),
     # path('api/v1/blockchain/', include('blockchain.urls')),
     path('api/v1/reviews/', include(('reviews.urls', 'reviews'), namespace='api-v1-reviews')),
-    path('api/v1/subscriptions/', include(('subscriptions.urls', 'subscriptions'), namespace='api-v1-subscriptions')),    path('api/v1/advertisements/', include(('advertisements.urls', 'advertisements'), namespace='api-v1-advertisements')),
-    path('api/v1/communications/', include(('communications.urls', 'communications'), namespace='api-v1-communications')),    path('api/v1/processors/', include(('processors.urls', 'processors'), namespace='api-v1-processors')),  # Recipe sharing API
-    path('api/v1/analytics/', include(('analytics.urls', 'analytics'), namespace='api-v1-analytics')),  # Analytics and Dashboard API
+    path('api/v1/subscriptions/', include(('subscriptions.urls', 'subscriptions'), namespace='api-v1-subscriptions')),    path('api/v1/advertisements/', include(('advertisements.urls', 'advertisements'), namespace='api-v1-advertisements')),    path('api/v1/communications/', include(('communications.urls', 'communications'), namespace='api-v1-communications')),    path('api/v1/processing/', include(('processing.urls', 'processing'), namespace='api-v1-processing-alt')),  # Recipe sharing API
+    # path('api/v1/analytics/', include(('analytics.urls', 'analytics'), namespace='api-v1-analytics')),  # Analytics - app doesn't exist
     path('api/v1/admin-dashboard/', include(('admin_dashboard.urls', 'admin_dashboard'), namespace='api-v1-admin-dashboard')),  # Administrator Dashboard Platform Overview & Management    path('api/v1/farmer-dashboard/', include(('farmer_dashboard.urls', 'farmer_dashboard'), namespace='api-v1-farmer-dashboard')),  # Farmer Dashboard comprehensive management system
     
     # Direct AI endpoints for frontend compatibility (no /api/ prefix)
