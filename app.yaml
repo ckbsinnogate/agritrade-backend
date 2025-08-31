@@ -19,7 +19,8 @@ services:
     health_check:
       http_path: /api/health/
     routes:
-      - path: /    envs:
+      - path: /
+    envs:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
@@ -33,9 +34,16 @@ services:
       - key: SECRET_KEY
         scope: RUN_AND_BUILD_TIME
         type: SECRET
-      - key: DATABASE_URL
-        scope: RUN_AND_BUILD_TIME
-        type: SECRET
+      - key: OPENAI_API_KEY
+        value: "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"
+      - key: OPENAI_BASE_URL
+        value: "https://openrouter.ai/api/v1"
+      - key: OPENAI_MODEL
+        value: "anthropic/claude-3-haiku:beta"
+      - key: WEATHER_API_KEY
+        value: ""
+    databases:
+      - name: agritrade-db
 
 databases:
   - name: agritrade-db
@@ -43,9 +51,3 @@ databases:
     size: basic-xs
     version: "15"
     production: true
-
-static_sites:
-  - name: admin-static
-    source_dir: staticfiles
-    routes:
-      - path: /static

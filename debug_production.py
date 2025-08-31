@@ -27,15 +27,18 @@ def test_django_configuration():
         print(f"   - DEBUG: {settings.DEBUG}")
         print(f"   - ALLOWED_HOSTS: {settings.ALLOWED_HOSTS}")
         print(f"   - SECRET_KEY set: {'Yes' if settings.SECRET_KEY else 'No'}")
-        
-        # Test database connection
+          # Test database connection
         from django.db import connection
         try:
             with connection.cursor() as cursor:
                 cursor.execute("SELECT 1")
-            print("✅ Database connection successful")
+                result = cursor.fetchone()
+            print(f"✅ Database connection successful: {result}")
+            print(f"   - Database backend: {settings.DATABASES['default']['ENGINE']}")
+            print(f"   - Database URL set: {'Yes' if os.getenv('DATABASE_URL') else 'No'}")
         except Exception as e:
             print(f"❌ Database connection failed: {e}")
+            print(f"   - DATABASE_URL: {os.getenv('DATABASE_URL', 'Not set')[:50]}...")
         
         # Test installed apps
         print(f"✅ Installed apps ({len(settings.INSTALLED_APPS)}):")
