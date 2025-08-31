@@ -131,6 +131,43 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Custom User Model
+AUTH_USER_MODEL = 'authentication.User'
+
+# AI Service Configuration
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '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')
+OPENAI_BASE_URL = os.getenv('OPENAI_BASE_URL', 'https://openrouter.ai/api/v1')
+OPENAI_MODEL = os.getenv('OPENAI_MODEL', 'anthropic/claude-3-haiku:beta')
+OPENAI_MAX_TOKENS = int(os.getenv('OPENAI_MAX_TOKENS', '2048'))
+OPENAI_TEMPERATURE = float(os.getenv('OPENAI_TEMPERATURE', '0.7'))
+OPENAI_TIMEOUT = int(os.getenv('OPENAI_TIMEOUT', '30'))
+
+# AI Features Configuration
+AI_FEATURES = {
+    'CONVERSATIONAL_AI': True,
+    'CROP_ADVISORY': True,
+    'DISEASE_DETECTION': True,
+    'MARKET_INTELLIGENCE': True,
+    'MULTILINGUAL_SUPPORT': True,
+    'SUPPORTED_LANGUAGES': ['en', 'tw', 'ha', 'yo'],
+    'DEFAULT_LANGUAGE': 'en',
+    'MAX_CONVERSATION_HISTORY': 10,
+    'FEEDBACK_COLLECTION': True,
+    'ANALYTICS_TRACKING': True,
+}
+
+# AI Usage Limits
+AI_USAGE_LIMITS = {
+    'DAILY_REQUESTS_PER_USER': 50,
+    'MONTHLY_REQUESTS_PER_USER': 1000,
+    'MAX_IMAGE_SIZE_MB': 10,
+    'MAX_CONVERSATION_LENGTH': 20,
+    'RATE_LIMIT_WINDOW': 60,
+}
+
+# Weather API Configuration
+WEATHER_API_KEY = os.getenv('WEATHER_API_KEY', '')
+
 # Django REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

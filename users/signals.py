@@ -27,7 +27,6 @@ def create_extended_user_profile(sender, instance, created, **kwargs):
         ExtendedUserProfile.objects.get_or_create(user=instance)
 
 
-@receiver(m2m_changed, sender=User.roles.through)
 def create_role_specific_profile(sender, instance, action, pk_set, **kwargs):
     """Create role-specific profiles when users are assigned roles"""
     if action == 'post_add' and pk_set:
@@ -69,3 +68,7 @@ def create_role_specific_profile(sender, instance, action, pk_set, **kwargs):
                     
             except UserRole.DoesNotExist:
                 continue
+
+
+# Connect the m2m_changed signal for User.roles
+m2m_changed.connect(create_role_specific_profile, sender=User.roles.through)
